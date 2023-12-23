@@ -1,0 +1,110 @@
+.hero_container {
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  --circleDiameter: 470px;
+  --planets: calc(var(--circleDiameter) / 40);
+  padding-bottom: 2rem;
+  padding-top: 6px;
+}
+
+.hero_circle {
+  position: relative;
+  width: var(--circleDiameter);
+  height: var(--circleDiameter);
+  margin-top: 1.5rem;
+  margin-right: auto;
+  margin-left: 30px;
+}
+
+.hero_rotate {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 100%;
+  animation: rotate 30s linear infinite;
+}
+.hero_rotate_reverse {
+  position: relative;
+  top: -105%;
+  left: 5%;
+  width: 110%;
+  border-width: 2px;
+  border-style: solid;
+  height: 110%;
+  border-radius: 100%;
+  animation: rotate_reverse 30s linear infinite;
+}
+
+.planet {
+  position: absolute;
+  width: var(--planets);
+  aspect-ratio: 1;
+  border-radius: 100%;
+}
+
+.planet:nth-child(1) {
+  top: calc(-1 * var(--planets) / 2);
+  left: calc(var(--circleDiameter) / 2 - var(--planets) / 2 - 5px);
+}
+
+.planet:nth-child(2) {
+  top: calc(var(--circleDiameter) / 2 - var(--planets) / 2 - 5px);
+  right: calc(-1 * var(--planets) / 2);
+}
+
+.planet:nth-child(3) {
+  top: calc(var(--circleDiameter) / 2 - var(--planets) / 2 - 5px);
+  left: calc(-1 * var(--planets) / 2);
+}
+
+.planet:nth-child(4) {
+  left: calc(var(--circleDiameter) / 2 - var(--planets) / 2 - 5px);
+  bottom: calc(-1 * var(--planets) / 2);
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotate_reverse {
+  0% {
+    transform: rotate(360deg);
+  }
+
+  100% {
+    transform: rotate(0);
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .hero_container {
+    --circleDiameter: 400px;
+    --planets: calc(var(--circleDiameter) / 40);
+  }
+  .hero_circle {
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
+@media only screen and (max-width: 999px) {
+  .hero_container {
+    --circleDiameter: 320px;
+    --planets: calc(var(--circleDiameter) / 40);
+  }
+}
+@media only screen and (max-width: 420px) {
+  .hero_container {
+    --circleDiameter: 220px;
+    --planets: calc(var(--circleDiameter) / 20);
+  }
+}
